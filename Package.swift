@@ -5,39 +5,37 @@ import PackageDescription
 
 let package = Package(name: "RxRealm",
                       platforms: [
-                        .macOS(.v10_10), .iOS(.v9), .tvOS(.v9), .watchOS(.v3)
+                        .macOS(.v10_10), .iOS(.v11), .tvOS(.v9), .watchOS(.v3)
                       ],
                       products: [
                         // Products define the executables and libraries produced by a package, and make them visible to other packages.
                         .library(name: "RxRealm",
                                  targets: ["RxRealm"])
                       ],
-
+                      
                       dependencies: [
                         // Dependencies declare other packages that this package depends on.
                         .package(url: "https://github.com/realm/realm-cocoa.git", .upToNextMajor(from: "10.2.0")),
                         .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "5.1.0"))
                       ],
-
+                      
                       targets: [
                         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
                         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
                         .target(name: "RxRealm",
                                 dependencies: [
-                                  .product(name: "RxSwift", package: "RxSwift"),
-                                  .product(name: "Realm", package: "Realm"),
-                                  .product(name: "RealmSwift", package: "Realm"),
-                                  .product(name: "RxCocoa", package: "RxSwift")
+                                    .product(name: "RxSwift", package: "RxSwift"),
+                                    .product(name: "RxCocoa", package: "RxSwift"),
+                                    .product(name: "RealmSwift", package: "Realm"),
                                 ],
                                 path: "Sources"),
                         .testTarget(name: "RxRealmTests",
                                     dependencies: [
-                                      .byName(name: "RxRealm"),
-                                      .product(name: "RxSwift", package: "RxSwift"),
-                                      .product(name: "RxBlocking", package: "RxSwift"),
-                                      .product(name: "Realm", package: "Realm"),
-                                      .product(name: "RealmSwift", package: "Realm"),
-                                      .product(name: "RxCocoa", package: "RxSwift")
+                                        .byName(name: "RxRealm"),
+                                        .product(name: "RxSwift", package: "RxSwift"),
+                                        .product(name: "RxBlocking", package: "RxSwift"),
+                                        .product(name: "RxCocoa", package: "RxSwift"),
+                                        .product(name: "RealmSwift", package: "Realm")
                                     ])
                       ],
                       swiftLanguageVersions: [.v5])
