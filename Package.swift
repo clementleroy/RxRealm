@@ -15,8 +15,8 @@ let package = Package(name: "RxRealm",
                       
                       dependencies: [
                         // Dependencies declare other packages that this package depends on.
-                        .package(url: "https://github.com/realm/realm-cocoa.git", .upToNextMajor(from: "10.2.0")),
-                        .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "5.1.0"))
+                        .package(url: "https://github.com/realm/realm-cocoa.git", .upToNextMajor(from: "10.7.0")),
+                        .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.0.0"))
                       ],
                       
                       targets: [
@@ -25,8 +25,9 @@ let package = Package(name: "RxRealm",
                         .target(name: "RxRealm",
                                 dependencies: [
                                     .product(name: "RxSwift", package: "RxSwift"),
-                                    .product(name: "RxCocoa", package: "RxSwift"),
+                                    .product(name: "Realm", package: "Realm"),
                                     .product(name: "RealmSwift", package: "Realm"),
+                                    .product(name: "RxCocoa", package: "RxSwift")
                                 ],
                                 path: "Sources"),
                         .testTarget(name: "RxRealmTests",
@@ -34,8 +35,9 @@ let package = Package(name: "RxRealm",
                                         .byName(name: "RxRealm"),
                                         .product(name: "RxSwift", package: "RxSwift"),
                                         .product(name: "RxBlocking", package: "RxSwift"),
-                                        .product(name: "RxCocoa", package: "RxSwift"),
-                                        .product(name: "RealmSwift", package: "Realm")
+                                        .product(name: "Realm", package: "Realm"),
+                                        .product(name: "RealmSwift", package: "Realm"),
+                                        .product(name: "RxCocoa", package: "RxSwift")
                                     ])
                       ],
                       swiftLanguageVersions: [.v5])
